@@ -53,6 +53,7 @@ export async function sendPushNotification(payload: ExpoPushPayload): Promise<Ex
   });
 
   const result = (await response.json()) as ExpoPushResponse;
+  console.log("EXPO PUSH RESPONSE:", result);
 
   if (!response.ok) {
     const reason = result.errors?.[0]?.message ?? `HTTP ${response.status}`;

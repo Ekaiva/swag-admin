@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { sendPushNotification, type Screen } from '../shared/expo-push';
-import { listTokens } from '../shared/token-store';
+import { sendPushNotification, type Screen } from '../shared/expo-push.ts';
+import { listTokens } from '../shared/token-store.ts';
 
 const VALID_SCREENS: Screen[] = ['1', '2', '3'];
 
