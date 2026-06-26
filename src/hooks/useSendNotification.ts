@@ -20,6 +20,7 @@ export function useSendNotification() {
       const response = await sendNotification(payload);
       setState({ loading: false, response, error: null });
     } catch (err) {
+      
       const message = err instanceof Error ? err.message : 'Failed to send notification';
       setState({ loading: false, response: null, error: message });
     }

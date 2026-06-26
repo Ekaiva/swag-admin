@@ -52,7 +52,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const result = await sendPushNotification({ tokens: recipients, title, body, screen });
     return res.status(200).json({ ...result, recipientCount: recipients.length });
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Unknown error sending push notification';
-    return res.status(502).json({ error: message });
-  }
+  console.error("SEND NOTIFICATION ERROR:", err);
+
+  const message =
+    err instanceof Error ? err.message : String(err);
+
+  return res.status(500).json({
+    error: message,
+  });
+}
 }
