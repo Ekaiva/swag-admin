@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { addToken, isValidExpoToken, listTokens } from '../shared/token-store';
+import { addToken, isValidExpoToken, listTokens } from './shared/token-store';
 
 // CORS — the Expo app registers its token from a different origin.
 function setCors(res: VercelResponse) {
