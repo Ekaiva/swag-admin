@@ -64,7 +64,7 @@ export function NotificationForm({ disabled, onSubmit }: Props) {
         </span>
         <select value={recipient} onChange={(e) => setRecipient(e.target.value)}>
           <option value={ALL}>
-            All registered tokens{tokensLoading ? '…' : ` (${tokens.length})`}
+            Please selct token 
           </option>
           {tokens.map((t) => (
             <option key={t} value={t}>
