@@ -2,7 +2,12 @@ import type { PushPayload, PushResponse, TokensResponse } from './types';
 
 /** Fetch all registered Expo push tokens for the recipient selector. */
 export async function fetchTokens(): Promise<string[]> {
-  return ['ExponentPushToken[Vo7zKIOr976QusVUBmwzeB]'];
+  const response = await fetch('/api/tokens');
+ 
+  if (!response.ok) return [];
+  const data = (await response.json()) as TokensResponse;
+   console.log('FETCH TOKENS RESPONSE:', data);
+  return data.tokens ?? [];
 }
 
 /** Thin fetch wrapper around the serverless function. Throws on HTTP failure. */
