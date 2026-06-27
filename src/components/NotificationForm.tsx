@@ -68,7 +68,7 @@ export function NotificationForm({ disabled, onSubmit }: Props) {
           </option>
           {tokens.map((t) => (
             <option key={t} value={t}>
-              Use this for swag app notification
+              {t}
             </option>
           ))}
           <option value={MANUAL}>Enter token manually…</option>
