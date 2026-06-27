@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { addToken, isValidExpoToken, listTokens } from './shared/token-store';
+import { addToken, isValidExpoToken, listTokens } from './shared/token-store.js';
 
 // CORS — the Expo app registers its token from a different origin.
 function setCors(res: VercelResponse) {
@@ -16,7 +16,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // POST /api/tokens — register a device's Expo push token.
     if (req.method === 'POST') {
       const { token } = (req.body ?? {}) as { token?: string };
       if (!isValidExpoToken(token)) {
@@ -26,7 +25,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({ ok: true });
     }
 
-    // GET /api/tokens — list all registered tokens for the admin UI.
     if (req.method === 'GET') {
       const tokens = await listTokens();
       return res.status(200).json({ tokens });
